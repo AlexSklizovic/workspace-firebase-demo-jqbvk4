@@ -20,6 +20,7 @@ $(".sampleSurvey input[type = 'submit']").click(function(e){
     //console.log(name + " " + value);
     inputJson[q1] = value;
   }
+  //
   console.log(inputJson2);
 });
 
