@@ -38,3 +38,27 @@ $("input[type='button']").click(function(e) {
   /* clear the entry */
   $("form")[0].reset();
 });
+
+/*firebase
+  .firestore()
+  .collection("hoteldata")
+  .onSnapshot(function(querySnapshot){
+    console.log(querySnapshot.size);
+    querySnapshot.forEach(doc => {
+      console.log(doc.data());
+      console.log(doc.data().room);
+      console.log(doc.data().checkout);
+    });
+  }); */
+
+  firebase
+  .firestore()
+  .collection("hoteldata")
+  .onSnapshot(function(querySnapshot){
+    console.log(querySnapshot.size);
+    querySnapshot.forEach(doc => {
+      console.log(doc.data());
+      console.log(doc.data().room);
+      console.log(doc.data().checkout);
+    });
+  });

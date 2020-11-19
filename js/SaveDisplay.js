@@ -25,3 +25,27 @@ $(".sampleSurvey input[type = 'submit']").click(function(e){
 });
 
 // update the result in table
+// get the data from your database and update the table
+
+firebase
+  .firestore()
+  .collection("saveDisplayData")
+  .onSnapshot(function(querySnapshot){
+    console.log(querySnapshot.size);
+    querySnapshot.forEach(doc => {
+      console.log(doc.data());
+      let choiceType = doc.data().choice;
+      if(choiceType == "A"){
+        
+      }
+      if(choiceType == "B"){
+
+      }
+      if(choiceType == "C"){
+
+      }
+      if(choiceType == "D"){
+
+      }
+    }); 
+  });
