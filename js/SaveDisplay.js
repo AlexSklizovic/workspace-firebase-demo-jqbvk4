@@ -1,6 +1,14 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {};
+const firebaseConfig = {
+  apiKey: "AIzaSyAM_ZQNl8UVLn7XYsnqtQvTn28dmAR-ufE",
+  authDomain: "grocerylist-459c5.firebaseapp.com",
+  databaseURL: "https://grocerylist-459c5.firebaseio.com",
+  projectId: "grocerylist-459c5",
+  storageBucket: "grocerylist-459c5.appspot.com",
+  messagingSenderId: "225456916152",
+  appId: "1:225456916152:web:aac704f300fcc54730964d"
+};
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
