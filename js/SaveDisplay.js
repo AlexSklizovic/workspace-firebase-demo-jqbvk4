@@ -23,16 +23,23 @@ $(".sampleSurvey input[type = 'submit']").click(function(e){
   let inputJson2 = {};
 
   for (var i = 0; i < inputData.length; i++) {
-    var q1 = inputdata[i]["q1"];
-    var value = inputdata[i]["value"];
-    //console.log(name + " " + value);
-    inputJson[q1] = value;
+    var q1 = inputData[i]["q1"];
+    var value = inputData[i]["value"];
+    console.log(name + " " + value);
+    inputJson2[q1] = value;
   }
   //
   console.log(inputJson2);
 });
 
 // update the result in table
+let ans1 = 0;
+let ans2 = 0;
+let ans3 = 0;
+let ans4 = 0;
+let ans5 = 0;
+
+
 // get the data from your database and update the table
 
 firebase
@@ -40,20 +47,36 @@ firebase
   .collection("saveDisplayData")
   .onSnapshot(function(querySnapshot){
     console.log(querySnapshot.size);
+
+    ans1 = 0;
+    ans2 = 0;
+    ans3 = 0;
+    ans4 = 0;
+    ans5 = 0;
+
     querySnapshot.forEach(doc => {
+      console.log("test" + doc.get("choice"));
       console.log(doc.data());
-      let choiceType = doc.data().choice;
+      let choiceType = doc.get("choice");
       if(choiceType == "A"){
-        
+        ans1++;
+        $("#ans1").html(ans1);
       }
       if(choiceType == "B"){
-
+        ans2++;
+        $("#ans2").html(ans2);
       }
       if(choiceType == "C"){
-
+        ans3++;
+        $("#ans3").html(ans3);
       }
       if(choiceType == "D"){
-
+        ans4++;
+        $("#ans4").html(ans4);
+      }
+      if(choiceType == "E"){
+        ans5++;
+        $("#ans5").html(ans5);
       }
     }); 
   });

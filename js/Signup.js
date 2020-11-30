@@ -23,9 +23,11 @@ $('#signup-form').submit(function(e){
   // HW read the data from the form
   let email = "sklizo44@gmail.com";
   let psw = "password";
-  firebase.auth().createUserWithEmailAndPassword(email, psw).then(user => {
+  firebase.auth().createUserWithEmailAndPassword(email, psw)
+  .then(user => {
     console.log("success");
-  }).catch(error =>{
+  })
+  .catch(error =>{
     console.log(error.code);
     console.log(error.message);
   });
