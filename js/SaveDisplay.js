@@ -25,11 +25,16 @@ $(".sampleSurvey input[type = 'submit']").click(function(e){
   for (var i = 0; i < inputData.length; i++) {
     var q1 = inputData[i]["q1"];
     var value = inputData[i]["value"];
-    console.log(name + " " + value);
+    console.log(q1 + " " + value);
     inputJson2[q1] = value;
   }
-  //
+  // save data to database
   console.log(inputJson2);
+
+  firebase
+    .firestore()
+    .collection("saveDisplayData")
+    .add(inputJson2);
 });
 
 // update the result in table
@@ -55,26 +60,27 @@ firebase
     ans5 = 0;
 
     querySnapshot.forEach(doc => {
-      console.log("test" + doc.get("choice"));
+      console.log("The choice is " + doc.get("choice"));
+      console.log("Comments are " + doc.get("comm"));
       console.log(doc.data());
-      let choiceType = doc.get("choice");
-      if(choiceType == "A"){
+      
+      if(doc.get("choice") == "A"){
         ans1++;
         $("#ans1").html(ans1);
       }
-      if(choiceType == "B"){
+      if(doc.get("choice") == "B"){
         ans2++;
         $("#ans2").html(ans2);
       }
-      if(choiceType == "C"){
+      if(doc.get("choice") == "C"){
         ans3++;
         $("#ans3").html(ans3);
       }
-      if(choiceType == "D"){
+      if(doc.get("choice") == "D"){
         ans4++;
         $("#ans4").html(ans4);
       }
-      if(choiceType == "E"){
+      if(doc.get("choice") == "E"){
         ans5++;
         $("#ans5").html(ans5);
       }

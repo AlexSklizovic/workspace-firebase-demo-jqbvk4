@@ -20,9 +20,22 @@ $('#signup-form').submit(function(e){
   console.log("Submit button clicked.")
   
   // use the provided sign in
+  let input2 = $("form").serializeArray();
+  console.log(input2);
+  let inputJson = {};
+
+  for(let i = 0; i < input2.length; i++){
+    let name = input2[i]["name"];
+    let value = input2[i]["value"];
+    console.log(name + " " + value);
+    inputJson[name] = value;
+  }
+
   // HW read the data from the form
-  let email = "sklizo44@gmail.com";
-  let psw = "password";
+  console.log(inputJson["username"]);
+  let email = inputJson["username"];
+  let psw = inputJson["password"]
+
   firebase.auth().createUserWithEmailAndPassword(email, psw)
   .then(user => {
     console.log("success");
